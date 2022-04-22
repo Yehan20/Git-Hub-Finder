@@ -13,6 +13,7 @@
     /* Btn */
     --btn: #0079FF;
     --btn-hover: #60ABFF;
+    --search-clr:#697C9A;
 }
 
 *{  
@@ -30,4 +31,9 @@ body{
 }
 .icon{
     display:inline !important;
+}
+.icons svg{
+   display: inline-block;
+   fill: #fff;
+   margin-right:0.4em;
 }

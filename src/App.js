@@ -23,8 +23,9 @@ function App() {
    // },[search])
 
    const viewUsers=(userId)=>{
-       getUsers(userId);
-
+      if(userId!==' '){
+         getUsers(userId);
+      }
    }
 
   return (
