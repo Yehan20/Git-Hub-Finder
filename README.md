@@ -1,10 +1,10 @@
 # Project Breif
 
-This is a simple react , app that uses the github api to find github users,  I used tailiwind css with this , we can type the name of the github accounts search the details,  There is a limited number searches per hour
+This is a simple react , app that uses the github api to find github users,  I used Tailwind css with this , we can type the name of the github accounts search the details,  There is a limited number searches per hour
 
-![Desktop Img](ui/lg.png))
+![Desktop Img](ui/lg.png)
 
-![Mobile Img](ui/sm.png))
+![Mobile Img](ui/sm.png)
 
 <a href="https://yn-git-hub-searcher.netlify.app/">Live Site</a>
 
