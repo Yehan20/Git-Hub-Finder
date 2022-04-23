@@ -1,7 +1,7 @@
 import { useState} from "react";
 
 const Profile = ({user,repos}) => {
-    const [emptyRepos,setEmptyRepos]=useState(repos.length===0?true:false);
+    const emptyRepos=(repos.length===0?true:false);
     let year;
      if(user.created_at!==undefined){
        year = (user.created_at).split("T");
@@ -51,12 +51,12 @@ const Profile = ({user,repos}) => {
 
                         <p className="mb-3 text-xs sm:text-sm xs:text-base">
                         <svg height="20" alt="ICON" width="20" xmlns="http://www.w3.org/2000/svg"><g fill="#2B3442"><path d="M7.404 5.012c-2.355 2.437-1.841 6.482.857 8.273.089.06.207.048.283-.027.568-.555 1.049-1.093 1.47-1.776a.213.213 0 00-.084-.3A2.743 2.743 0 018.878 10.1a2.64 2.64 0 01-.223-1.803c.168-.815 1.043-1.573 1.711-2.274l-.004-.002 2.504-2.555a2.568 2.568 0 013.648-.019 2.6 2.6 0 01.037 3.666l-1.517 1.56a.266.266 0 00-.06.273c.35 1.012.435 2.44.201 3.519-.006.03.031.05.053.028l3.228-3.295c2.062-2.105 2.044-5.531-.04-7.615a5.416 5.416 0 00-7.691.04L7.417 4.998l-.013.014z"/><path d="M13.439 13.75a.401.401 0 00.006-.003c.659-1.204.788-2.586.48-3.933l-.002.002-.001-.001a5.434 5.434 0 00-2.19-3.124.3.3 0 00-.333.015c-.553.448-1.095 1.021-1.452 1.754a.243.243 0 00.096.317c.415.24.79.593 1.04 1.061h.001c.196.33.388.958.263 1.632-.116.894-1.019 1.714-1.736 2.453-.546.559-1.935 1.974-2.49 2.542a2.6 2.6 0 01-3.666.037 2.6 2.6 0 01-.038-3.666l1.521-1.564A.266.266 0 005 11.004c-.338-1.036-.43-2.432-.217-3.51.006-.03-.031-.049-.053-.027l-3.179 3.245c-2.083 2.126-2.066 5.588.04 7.693 2.125 2.083 5.57 2.048 7.653-.078.723-.81 3.821-3.678 4.195-4.577z"/></g></svg>
-                        {user.blog && <a title="Click to visit" href={user.blog} target="_blank">{user.blog}</a>}{!user.blog && variable}</p>
+                        {user.blog && <a title="Click to visit" rel="noreferrer" href={user.blog} target="_blank">{user.blog}</a>}{!user.blog && variable}</p>
                     </div>
                     <div className="icons mt-3">
                         <p className="mb-3 text-xs sm:text-sm xs:text-base">
                             <svg height="18" alt="ICON" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M20 2.799a8.549 8.549 0 01-2.363.647 4.077 4.077 0 001.804-2.266 8.194 8.194 0 01-2.6.993A4.099 4.099 0 009.75 4.977c0 .324.027.637.095.934-3.409-.166-6.425-1.8-8.452-4.288a4.128 4.128 0 00-.56 2.072c0 1.42.73 2.679 1.82 3.408A4.05 4.05 0 01.8 6.598v.045a4.119 4.119 0 003.285 4.028 4.092 4.092 0 01-1.075.135c-.263 0-.528-.015-.776-.07.531 1.624 2.038 2.818 3.831 2.857A8.239 8.239 0 01.981 15.34 7.68 7.68 0 010 15.285a11.543 11.543 0 006.29 1.84c7.545 0 11.67-6.25 11.67-11.667 0-.182-.006-.357-.015-.53A8.18 8.18 0 0020 2.798z" fill="#2B3442" className="inline-block"/></svg>
-                             {user.twitter_username && <a title="Click to visit" target="_blank" href={`https://twitter.com/`+user.twitter_username}> {user.twitter_username}</a>}{!user.twitter_username && variable}</p>
+                             {user.twitter_username && <a title="Click to visit" rel="noreferrer" target="_blank" href={`https://twitter.com/`+user.twitter_username}> {user.twitter_username}</a>}{!user.twitter_username && variable}</p>
 
 
                         <p className="mb-3 text-xs sm:text-sm xs:text-base">
@@ -80,7 +80,7 @@ const Profile = ({user,repos}) => {
                     <div className="d-flex flex-col ">
                         {repos && repos.map((repo)=>{
                             return <div key={repo.id} className="flex xs:gap-5 items-center gap-2 mb-3 content-between justify-between">
-                                <p className="text-start  text-xs sm:text-sm  md:text-base w-full"><a href={repo.clone_url} title="Click to visit" target="_blank">{repo.name}</a></p>
+                                <p className="text-start  text-xs sm:text-sm  md:text-base w-full"><a rel="noreferrer" href={repo.clone_url} title="Click to visit" target="_blank">{repo.name}</a></p>
                                 <p className=" btn w-1/2  min-w-normal  text-xs sm:text-sm  md:text-base text-center btn-primary">Forks : {repo.forks}</p>
                                 <p className=" btn  w-1/2  min-w-normal   text-xs sm:text-sm  md:text-base text-center btn-primary">Stars : {repo.stargazers_count}</p>
                             
