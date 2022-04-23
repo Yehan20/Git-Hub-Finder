@@ -16,9 +16,9 @@ const Profile = ({user,repos}) => {
             <div className="col-2  rounded flex flex-col  px-5 pb-3 w-full  rounded-1xl ">
                 <div className="flex flex-col sm:flex-row mb-3">
                     <div className="w-full">
-                        <h2 className="mb-1  text-dark text-center sm:text-left  sm:mb-3">{user.name}</h2>
-                        <h4 className="mb-1  text-dark text-center    sm:text-left  sm:mb-3">{user.login}</h4>
-                        <p className="font-light text-dark   sm:text-left  text-center  mb-3" >{user.bio}</p>
+                        <h2 className="mb-1  text-black text-center sm:text-left  sm:mb-3">{user.name}</h2>
+                        <h4 className="mb-1  text-black text-center    sm:text-left  sm:mb-3">{user.login}</h4>
+                        <p className="font-light text-black   sm:text-left  text-center  mb-3" >{user.bio}</p>
                     </div>
 
                     <h3 className="w-full  text-center sm:text-right  text-sm">
@@ -26,7 +26,7 @@ const Profile = ({user,repos}) => {
                     </h3>
                 </div>
 
-                <div style={{marginLeft:0}} className="flex mt-2 py-2 justify-between p-2  gap-x-2 rounded rounded-1xl   bg-whiteGrey">
+                <div style={{marginLeft:0}} className="flex mt-2 py-2 justify-between p-2  gap-x-2 rounded rounded-1xl text-black  bg-whiteGrey">
                     
                    <div>
                        <h5 className="text-xs">Repos</h5>
@@ -74,7 +74,7 @@ const Profile = ({user,repos}) => {
            
          }
               
-             {year && <div className="mt-3  rounded rounded-2xl text-dark bg-whiteGrey bs p-3 space-x-0">
+             {year && <div className="mt-3  rounded rounded-2xl text-black bg-whiteGrey bs p-3 space-x-0">
                     <h2 className="text-2xl  mb-3">Newest Repos</h2>
                     {emptyRepos && <p className="text-center text-lg">No Repos Made yet</p>}
                     <div className="d-flex flex-col ">
