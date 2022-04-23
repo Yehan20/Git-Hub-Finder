@@ -26,7 +26,9 @@ module.exports = {
            lmIconbg: "brightness(100%)",
            btn: "#0079FF",
            btnhover: "#60ABFF",
-           searchClr:"#697C9A"
+           searchClr:"#697C9A",
+           whiteGrey:"#f6f8ff",
+           light:"#fefefe"
       }
     },
   },

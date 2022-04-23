@@ -21,7 +21,7 @@ body{
     min-height:100vh;
     margin:0;
     font-family: 'Space Mono', monospace;
-    background-color:#2B3442;
+    background-color:#f6f8ff;
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -34,3 +34,8 @@ body{
    fill: #fff;
    margin-right:0.4em;
 }
+    .bs{
+                
+      box-shadow:0 1.6rem 3rem -1rem rgba(105, 124, 154, 20);
+      
+    }
