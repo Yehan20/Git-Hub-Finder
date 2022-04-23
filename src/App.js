@@ -66,7 +66,7 @@ function App() {
            <div className="col mb-3 flex justify-between">
               <h1 className=' sm:text-left text-center w-full text-xl'>Git-Hub Searcher</h1>
            </div>
-           {/* search bar coloumn */}
+
            <div className="flex rounded mb-3 searchArea  rounded-2xl bg-light bs p-3"  >
               <div className="flex grow space-x-1 items-center xs:px-2">
                  <img  src={searchIcon} alt="" />
