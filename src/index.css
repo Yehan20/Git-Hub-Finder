@@ -2,38 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-:root{
-    --lm-bg: #F6F8FF;
-    --lm-bg-content: #FEFEFE;
-    --lm-text: #4B6A9B;
-    --lm-text-alt: #2B3442;
-    --lm-shadow-active: 0px 4px 4px 0px rgba(0,0,0,0.25);
-    --lm-shadow-inactive: 0px 16px 30px -10px rgba(0,0,0,0.2);
-    --lm-icon-bg: brightness(100%);
-    /* Btn */
-    --btn: #0079FF;
-    --btn-hover: #60ABFF;
-    --search-clr:#697C9A;
-}
-
-*{  
-    box-sizing: border-box;
-   
-}
-body{
-    min-height:100vh;
-    margin:0;
-    font-family: 'Space Mono', monospace;
-    background-color:#2B3442;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-}
-.icon{
-    display:inline !important;
-}
-.icons svg{
-   display: inline-block;
-   fill: #fff;
-   margin-right:0.4em;
-}
+@layer components {
+    .btn-primary {
+      @apply py-2 px-2 bg-blue-500 text-white font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75;
+    }
+  }

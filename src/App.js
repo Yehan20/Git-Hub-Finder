@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
-import './App.css';
+import './index.css';
+import "./App.css";
 import searchIcon from "./assets/icon-search.svg"
 import Profile from './Profile';
 import useGithub from './useGithub';
 function App() {
    const{ clientid,clientsecret,repos_count,repos_sort}= useGithub();
    const [users,setUsers]=useState(null)
+   const [repos,setRepos]=useState(null);
    const [search,setSerach]=useState("");
 
    const getUsers=async(userId)=>{
@@ -13,6 +15,11 @@ function App() {
 
         const profileResponse =await profile.json()
 
+        const repo = await fetch(`https://api.github.com/users/${userId}/repos?per_page=${repos_count}&sort=${repos_sort}&clientid=${clientid}&clientsecret=${clientsecret}`)
+
+        const repoResponse = await repo.json();
+        
+        setRepos(repoResponse);
         setUsers(profileResponse)
 
    }
@@ -23,7 +30,7 @@ function App() {
    // },[search])
 
    const viewUsers=(userId)=>{
-      if(userId!==' '){
+      if(userId!==' ' || userId!=''){
          getUsers(userId);
       }
    }
@@ -48,7 +55,7 @@ function App() {
            </button>
            </div>
 
-           {users && <Profile user={users}/>}
+           {users && <Profile user={users} repos={repos}/>}
         </div>
      </main>
   );

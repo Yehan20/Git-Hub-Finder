@@ -11,6 +11,10 @@ module.exports = {
      xl:"1440px"
     
     },
+    minWidth:{
+      normal:"90px",
+      
+    },
     extend: {
       colors:{
           lmBg: "#F6F8FF",
