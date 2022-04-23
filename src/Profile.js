@@ -16,9 +16,9 @@ const Profile = ({user,repos}) => {
             <div className="col-2  rounded flex flex-col  px-5 pb-3 w-full  rounded-1xl ">
                 <div className="flex flex-col sm:flex-row mb-3">
                     <div className="w-full">
-                        <h2 className="mb-1 text-center sm:text-left  sm:mb-3">{user.name}</h2>
-                        <h4 className="mb-1 text-center    sm:text-left  sm:mb-3">{user.login}</h4>
-                        <p className="font-light  sm:text-left  text-center  mb-3" >{user.bio}</p>
+                        <h2 className="mb-1  text-dark text-center sm:text-left  sm:mb-3">{user.name}</h2>
+                        <h4 className="mb-1  text-dark text-center    sm:text-left  sm:mb-3">{user.login}</h4>
+                        <p className="font-light text-dark   sm:text-left  text-center  mb-3" >{user.bio}</p>
                     </div>
 
                     <h3 className="w-full  text-center sm:text-right  text-sm">
