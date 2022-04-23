@@ -1,3 +1,24 @@
+# Project Breif
+
+This is a simple react , app that uses the github api to find github users,  I used tailiwind css with this , we can type the name of the github accounts search the details,  There is a limited number searches per hour
+
+![Desktop Img](ui/lg.png))
+
+![Mobile Img](ui/sm.png))
+
+<a href="https://yn-git-hub-searcher.netlify.app/">Live Site</a>
+
+# Conecpts used
+
+<ul>
+   <li>UseSate Hook</li>
+   <li>Async & Await</li>
+   <li>Custom Hooks</li>
+   <li>Props</li>
+   <li>Loops</li>
+</ul>
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
