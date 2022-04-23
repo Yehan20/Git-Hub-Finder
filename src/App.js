@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './index.css';
 import "./App.css";
 import searchIcon from "./assets/icon-search.svg"
+import loader from  "./assets/loading.gif";
 import Profile from './Profile';
 import useGithub from './useGithub';
 function App() {
@@ -9,30 +10,52 @@ function App() {
    const [users,setUsers]=useState(null)
    const [repos,setRepos]=useState(null);
    const [search,setSerach]=useState("");
+   const [error,setError]=useState(null);
+   const [loading,setLoading]=useState(false);
+   const [disabled,isDisabled]=useState(false);
 
    const getUsers=async(userId)=>{
-        const profile =await  fetch(`https://api.github.com/users/${userId}?clientid=${clientid}&clientsecret=${clientsecret}`);
+      if(userId!='' || userId!==null){
+         try {
+            const profile =await  fetch(`https://api.github.com/users/${userId}?clientid=${clientid}&clientsecret=${clientsecret}`);
 
-        const profileResponse =await profile.json()
+            // console.log(profile);
 
-        const repo = await fetch(`https://api.github.com/users/${userId}/repos?per_page=${repos_count}&sort=${repos_sort}&clientid=${clientid}&clientsecret=${clientsecret}`)
-
-        const repoResponse = await repo.json();
+            const profileResponse =await profile.json()
+    
+            const repo = await fetch(`https://api.github.com/users/${userId}/repos?per_page=${repos_count}&sort=${repos_sort}&clientid=${clientid}&clientsecret=${clientsecret}`)
+    
+            const repoResponse = await repo.json();
+            console.log("fdwqdw",profile);
+            if(!repo.ok || !profile.ok){
+               throw new Error("Wrong Id")
+            }
         
-        setRepos(repoResponse);
-        setUsers(profileResponse)
-
+            if(repo.status===403){
+               throw new Error("Limit Excceded")
+            }
+            
+            setRepos(repoResponse);
+            setUsers(profileResponse)
+            setLoading(false);
+            
+         } catch (e) {
+            
+            setError("404 Wrong Id");
+            setLoading(false);
+           
+         
+         }
+   
+      }
+      else setUsers(null)
    }
 
-   // useEffect(()=>{
-   //    viewUsers(search);
-
-   // },[search])
 
    const viewUsers=(userId)=>{
-      if(userId!==' ' || userId!=''){
+         setLoading(true);
          getUsers(userId);
-      }
+  
    }
 
   return (
@@ -44,18 +67,26 @@ function App() {
            </div>
            {/* search bar coloumn */}
            <div className="flex rounded mb-3  rounded-2xl bg-lmText p-3">
-              <div className="flex grow space-x-5 items-center px-2">
+              <div className="flex grow space-x-1 items-center xs:px-2">
                  <img  src={searchIcon} alt="" />
-                 <input type="text" onKeyUp={(e)=>{
-                    viewUsers(e.target.value);
+                 <input type="text" onChange={(e)=>{
+                    setSerach(e.target.value);
+                    setError(null)
+                 }} onFocus={(e)=>{
+                    if(e.target.value==='')isDisabled(true);
                  }} className="grow bg-lmText py-2 focus:outline-none text-white " placeholder='Serach users' />
               </div>
-              <button className="bg-blue-500 rounded-1xl hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+              <button onClick={()=>viewUsers(search)} className="bg-blue-500 inline-block rounded-1xl  text-sm sm:text-base hover:bg-blue-700 text-white font-bold py-2 px-2 sm:px-4 rounded">
                Search
            </button>
            </div>
 
            {users && <Profile user={users} repos={repos}/>}
+           {error && <p className='text-2xl text-white text-center'>{error}</p> }
+           <div>
+           {loading && <img src={loader} className="d-block mx-auto w-20 h-20" alt="" />}
+           </div>
+            
         </div>
      </main>
   );
