@@ -1,4 +1,4 @@
-import { useState,useEffect } from "react";
+import { useState} from "react";
 
 const Profile = ({user,repos}) => {
     const [emptyRepos,setEmptyRepos]=useState(repos.length===0?true:false);

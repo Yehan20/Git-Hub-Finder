@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './index.css';
 import "./App.css";
 import searchIcon from "./assets/icon-search.svg"
@@ -17,7 +17,7 @@ function App() {
    
    const getUsers=async(userId)=>{
 
-      if(userId!='' || userId!==null){
+      if(userId!=='' || userId!==null){
           try {
             setUsers(null);
             const profile =await  fetch(`https://api.github.com/users/${userId}?clientid=${clientid}&clientsecret=${clientsecret}`);
