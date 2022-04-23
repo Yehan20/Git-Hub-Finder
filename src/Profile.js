@@ -10,10 +10,10 @@ const Profile = ({user,repos}) => {
 
     return ( <>{year && 
         <div className=" rounded rounded-2xl flex md:flex-row  gap-x-2 flex-col md:items-stretch items-center  bg-light bs text-black searchArea p-3 text-white">
-            <div className="col-1 px-3 space-x-2">
+            <div className="col-1 px-1 sm:px-3 space-x-2">
                  <img src={user.avatar_url} alt="Profile img" className=" rounded-full block h-19 w-20" />
             </div>
-            <div className="col-2  rounded flex flex-col  px-5 pb-3 w-full  rounded-1xl ">
+            <div className="col-2  rounded flex flex-col  px-1 sm:px-5 pb-3 w-full  rounded-1xl ">
                 <div className="flex flex-col sm:flex-row mb-3">
                     <div className="w-full">
                         <h2 className="mb-1  text-black text-center sm:text-left  sm:mb-3">{user.name}</h2>
@@ -74,10 +74,10 @@ const Profile = ({user,repos}) => {
            
          }
               
-             {year && <div className="mt-3  rounded rounded-2xl text-black bg-whiteGrey bs p-3 space-x-0">
-                    <h2 className="text-2xl  mb-3">Newest Repos</h2>
-                    {emptyRepos && <p className="text-center text-lg">No Repos Made yet</p>}
-                    <div className="d-flex flex-col ">
+             {year && <div className="mt-3  rounded rounded-2xl text-black bg-whiteGrey bs sm:p-1  p-3 space-x-0">
+                    <h2 className="text-2xl p-1 mb-3">Newest Repos</h2>
+                    {emptyRepos && <p className="p-1 sm:p-2 text-center text-lg">No Repos Made yet</p>}
+                    <div className=" p-1 sm:p-2 d-flex flex-col ">
                         {repos && repos.map((repo)=>{
                             return <div key={repo.id} className="flex xs:gap-5 items-center gap-2 mb-3 content-between justify-between">
                                 <p className="text-start  text-xs sm:text-sm  md:text-base w-full"><a rel="noreferrer" href={repo.clone_url} title="Click to visit" target="_blank">{repo.name}</a></p>
