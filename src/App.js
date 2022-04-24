@@ -8,6 +8,7 @@ import useGithub from './useGithub';
 function App() {
 
    const{ clientid,clientsecret,repos_count,repos_sort}= useGithub();
+   
    const [users,setUsers]=useState(null)
    const [repos,setRepos]=useState(null);
    const [search,setSerach]=useState("");
@@ -28,7 +29,6 @@ function App() {
             const repo = await fetch(`https://api.github.com/users/${userId}/repos?per_page=${repos_count}&sort=${repos_sort}&clientid=${clientid}&clientsecret=${clientsecret}`)
     
             const repoResponse = await repo.json();
-            console.log("fdwqdw",profile);
             if(!repo.ok || !profile.ok){
                throw new Error("Wrong Id")
             }
@@ -74,7 +74,7 @@ function App() {
                     setSerach(e.target.value);
                     setError(null)
                    
-                    if(e.target.value===''  ||  e.target.value.length<search.length)setUsers(null)
+                    if(e.target.value===''  ||  e.target.value.length<search.length ||  e.target.value.length>search.length)setUsers(null)
                  }} className="grow  py-2 searchArea focus:outline-none text-black " placeholder='Serach users' />
               </div>
               <button onClick={()=>viewUsers(search)} className="bg-blue-500 inline-block rounded-1xl  text-sm sm:text-base hover:bg-blue-700 text-white font-bold py-2 px-2 sm:px-4 rounded">
