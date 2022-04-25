@@ -20,7 +20,7 @@ const Profile = ({user,repos}) => {
                         <p className="font-light text-black   sm:text-left  text-center  mb-3" >{user.bio}</p>
                     </div>
 
-                    <h3 className="w-full  text-center sm:text-right  text-sm">
+                    <h3 className="w-full text-black text-center sm:text-right  text-sm">
                         Joined {year[0]}
                     </h3>
                 </div>
