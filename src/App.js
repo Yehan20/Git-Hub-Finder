@@ -14,11 +14,17 @@ function App() {
    const [search,setSerach]=useState("");
    const [error,setError]=useState(null);
    const [loading,setLoading]=useState(false);
+   const [empty,setEmpty]=useState(false);
+   const [border,setBorder]=useState("none")
 
    
    const getUsers=async(userId)=>{
 
-      if(userId!=='' || userId!==null){
+      setLoading(true);
+
+      if(userId!==''){
+       
+         setEmpty(false)
           try {
             setUsers(null);
             const profile =await  fetch(`https://api.github.com/users/${userId}?clientid=${clientid}&clientsecret=${clientsecret}`);
@@ -50,12 +56,20 @@ function App() {
          }
    
       }
-      else setUsers(null)
+      else {
+         setTimeout(()=>{
+            setUsers(null)
+            setEmpty(true)
+            setLoading(false)
+            setBorder("3px solid red")
+         },1000)
+   
+      }
    }
 
 
    const viewUsers=(userId)=>{
-         setLoading(true);
+         // setLoading(true);
          getUsers(userId);  
    }
 
@@ -67,15 +81,16 @@ function App() {
               <h1 className=' sm:text-left text-center w-full text-xl'>Git-Hub Searcher</h1>
            </div>
 
-           <div className="flex rounded mb-3 searchArea  rounded-2xl bg-light bs p-3"  >
+           <div className="flex rounded mb-3 searchArea  rounded-2xl bg-light bs p-3" style={{outline:border}}>
               <div className="flex grow space-x-1 items-center xs:px-2">
                  <img  src={searchIcon} alt="" />
                  <input type="text" id='' onChange={(e)=>{
                     setSerach(e.target.value);
                     setError(null)
+                    setBorder("none");
                    
                     if(e.target.value===''  ||  e.target.value.length<search.length ||  e.target.value.length>search.length)setUsers(null)
-                 }} className="grow  py-2 searchArea focus:outline-none text-black " placeholder='Serach users' />
+                 }} className="grow  py-2 searchArea focus:outline-none text-black " placeholder='Search users' />
               </div>
               <button onClick={()=>viewUsers(search)} className="bg-blue-500 inline-block rounded-1xl  text-sm sm:text-base hover:bg-blue-700 text-white font-bold py-2 px-2 sm:px-4 rounded">
                Search
@@ -83,10 +98,14 @@ function App() {
            </div>
 
            {users && <Profile user={users} repos={repos}/>}
-           {error && <p className='text-2xl mt-2 text-center'>{error}</p> }
-           <div>
+       
            {loading && <img src={loader} className="d-block mx-auto w-20 h-20" alt="" />}
            </div>
+
+           {error && <p className='text-2xl mt-2 text-center'>{error}</p> }
+
+           {empty && <p className='text-2xl mt-2 text-red-800 text-center'>Enter A User Name</p> }
+           <div>
             
         </div>
      </main>
